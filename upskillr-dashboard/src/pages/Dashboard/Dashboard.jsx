@@ -1,3 +1,4 @@
+// Add a proper default export to the Dashboard component
 import React from 'react';
 import { 
   Box, 

@@ -27,7 +27,8 @@ import { styled } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
-const StyledDrawer = styled(Drawer)(({ theme, open, ismobile }) => ({
+// Update the StyledDrawer component to fix potential rendering issues
+const StyledDrawer = styled(Drawer)(({ theme, ismobile }) => ({
   width: drawerWidth,
   flexShrink: 0,
   '& .MuiDrawer-paper': {
@@ -43,6 +44,7 @@ const StyledDrawer = styled(Drawer)(({ theme, open, ismobile }) => ({
   },
 }));
 
+// Fix the StyledListItem component
 const StyledListItem = styled(ListItem)(({ theme, active }) => ({
   margin: '8px 0',
   borderRadius: '8px',
@@ -52,6 +54,7 @@ const StyledListItem = styled(ListItem)(({ theme, active }) => ({
   },
 }));
 
+// Add menuItems definition before the Sidebar component
 const menuItems = [
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
   { text: 'Roadmap', icon: <CalendarIcon />, path: '/roadmap' },
@@ -60,6 +63,7 @@ const menuItems = [
   { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
 ];
 
+// And update the Sidebar component props
 const Sidebar = ({ mobileOpen, onClose }) => {
   const location = useLocation();
   const theme = useTheme();
@@ -91,12 +95,12 @@ const Sidebar = ({ mobileOpen, onClose }) => {
       
       <List sx={{ p: 2 }}>
         {menuItems.map((item) => (
-          <StyledListItem 
-            button 
-            component={Link} 
-            to={item.path} 
-            key={item.text}
+          <StyledListItem
+            button
+            component={Link}
+            to={item.path}
             active={(location.pathname === item.path).toString()}
+            key={item.text}
             onClick={isMobile ? onClose : undefined}
           >
             <ListItemIcon sx={{ color: 'inherit', minWidth: '40px' }}>
